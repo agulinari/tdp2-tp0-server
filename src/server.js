@@ -2,7 +2,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var url = require('url');
-
 var app = express();
 
 app.use(express.static(process.cwd() + '/public'));
@@ -32,7 +31,8 @@ app.get('/', function (req, res, next) {
 
 
 //Cities routing
-app.get('/cities/:namePattern', function (req, res, next) {
+app.get('/cities/:nameCity', function (req, res, next) {
+       
 	cityCtrl.getCities(req, res);
 });
 
@@ -45,4 +45,3 @@ app.get('/city/:id', function (req, res, next) {
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
-

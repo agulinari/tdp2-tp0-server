@@ -5,7 +5,7 @@ var errorHandler = require('../utils/ErrorHandler');
 //GET - Return all Cities by name pattern
 exports.getCities = function (req, res) {
     console.log('GET /cities');
-    service.getCities(req.params.namePattern, function (err, response) {
+    service.getCities(req, function (err, response) {
         if (err) {
             return errorHandler.throwError(res, err);
         }

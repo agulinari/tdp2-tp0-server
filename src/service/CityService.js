@@ -4,14 +4,15 @@ var utils = require('../utils/Utils');
 //var NotFound = require("../error/NotFound");
 var jsonValidator = require('../utils/JsonValidator');
 
-exports.getCities = function (namePattern, callback) {
+exports.getCities = function (req, callback) {
 /*
     if (! utils.isValidPattern(namePattern)) {
         callback(new BadRequest("Invalid City name"));
         return;
     }
 */
-    dao.getCities(namePattern, function (err, response) {
+    dao.getCities(req, function (err,response) {
+       
         if (err) {
             callback(err);
             return;
