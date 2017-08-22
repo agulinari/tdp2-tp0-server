@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var url = require('url');
+var http = require('http'); //para heroku
 var app = express();
 
 app.use(express.static(process.cwd() + '/public'));
@@ -41,7 +42,13 @@ app.get('/city/:id', function (req, res, next) {
 	weatherCtrl.getWeather(req, res);
 });
 
-// Start server
-app.listen(app.get('port'), function() {
-	console.log('Node app is running on port', app.get('port'));
-});
+// Start server local
+//app.listen(app.get('port'), function() {
+//	console.log('Node app is running on port', app.get('port'));
+//});
+
+//Start server in heroku
+http.createServer(function(request,response){
+	response.writeHead(200,{"Content-Type":"text/plain"})
+        response.end("Iniciando servicios servidor clima..\n")
+}).listen(app.get('port'))

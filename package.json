@@ -3,6 +3,10 @@
     "version": "0.0.1",
     "description": "A weather rest server",
     "private": "true",
+    "main":"server.js",
+    "scripts":{
+    	"start":"node ./src/server.js"
+    },
     "dependencies": {
         "express": "4.13.3",
         "body-parser": "1.17.2",
