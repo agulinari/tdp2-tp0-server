@@ -31,7 +31,7 @@ app.get('/', function (req, res, next) {
 
 
 //Cities routing
-app.get('/cities/:nameCity', function (req, res, next) {
+app.get('/cities', function (req, res, next) {
        
 	cityCtrl.getCities(req, res);
 });

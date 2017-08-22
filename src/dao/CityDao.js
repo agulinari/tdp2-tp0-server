@@ -18,12 +18,17 @@ exports.findById = function(req, res) {
 };
 
 exports.getCities = function(req,response) {
-      var cityName = req.params.nameCity;
-      City.find({"name":cityName}, function (err, values) {
+      var term = req.query.term ? req.query.term : "";
+      var offset = req.query.offset ? parseInt(req.query.offset) : 0;
+      var count = req.query.count ? parseInt(req.query.count) : 50;
+      console.log("offset " + offset);
+      console.log("count " + count);
+      City.find({"name":{ "$regex": "^" + term, "$options": "i" }}, function (err, values) {
       if (err){
+         console.log('Error: ' + err);
 	   return handleError(err);
       }
 	   console.log('Retrieving city: ' + values);
 	   return response(values);
-    }).limit(10);    
+    }).sort('name').skip(offset).limit(count);    
 };
