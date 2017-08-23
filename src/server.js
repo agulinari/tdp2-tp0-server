@@ -11,7 +11,7 @@ app.use(express.static(process.cwd() + '/public'));
 app.use('/js', express.static(process.cwd() + '/node_modules/bootstrap/dist/js'));
 
 // redirect CSS bootstrap
-app.use('/css', express.static(process.cwd() + '/node_modules/bootstrap/dist/css'));
+//app.use('/css', express.static(process.cwd() + '/node_modules/bootstrap/dist/css'));
 
 app.use(bodyParser.json({
 	limit: '50mb'
