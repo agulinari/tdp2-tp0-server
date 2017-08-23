@@ -11,7 +11,7 @@ app.use(express.static(process.cwd() + '/public'));
 app.use('/js', express.static(process.cwd() + '/node_modules/bootstrap/dist/js'));
 
 // redirect CSS bootstrap
-//app.use('/css', express.static(process.cwd() + '/node_modules/bootstrap/dist/css'));
+app.use('/css', express.static(process.cwd() + '/node_modules/bootstrap/dist/css'));
 
 app.use(bodyParser.json({
 	limit: '50mb'
@@ -42,12 +42,12 @@ app.get('/city/:id', function (req, res, next) {
 	weatherCtrl.getWeather(req, res);
 });
 
-// Start server local
-//app.listen(app.get('port'), function() {
-//	console.log('Node app is running on port', app.get('port'));
-//});
+ Start server local
+app.listen(app.get('port'), function() {
+	console.log('Node app is running on port', app.get('port'));
+});
 
 //Start server in heroku
-http.createServer(function(request,response){
-	console.log('Node app is running on port', app.get('port'));      
-}).listen(app.get('port'))
+//http.createServer(function(request,response){
+	//console.log('Node app is running on port', app.get('port'));      
+//}).listen(app.get('port'))
