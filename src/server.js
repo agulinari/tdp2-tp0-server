@@ -25,7 +25,21 @@ app.set('port', (process.env.PORT || 3000));
 var cityCtrl = require(process.cwd() + '/src/controllers/CityController');
 var weatherCtrl = require(process.cwd() + '/src/controllers/WeatherController');
 
-
+app.get('/', function (req, res, next) {
+ 	res.render('index');
+ });
+  
+  
+ //Cities routing
+ app.get('/cities', function (req, res, next) {
+ 	cityCtrl.getCities(req, res);
+ });
+ 
+ //Weather routing
+ app.get('/city/:id', function (req, res, next) {
+ 	weatherCtrl.getWeather(req, res);
+ });
+ 
 
 // Start server
 app.listen(app.get('port'), function() {
