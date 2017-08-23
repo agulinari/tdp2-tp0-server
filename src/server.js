@@ -48,7 +48,6 @@ app.get('/city/:id', function (req, res, next) {
 //});
 
 //Start server in heroku
-http.createServer(function(request,response){
-	response.writeHead(200,{"Content-Type":"text/plain"})
-        response.end("Iniciando servicios servidor clima..\n")
+http.createServer(function(req,res){
+	
 }).listen(app.get('port'))
