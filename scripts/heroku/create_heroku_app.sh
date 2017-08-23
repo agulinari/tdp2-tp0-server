@@ -1,3 +1,4 @@
+cd ../../
 heroku apps:destroy;
 git init && git commit -m "init";
 heroku create;
