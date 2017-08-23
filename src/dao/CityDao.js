@@ -17,18 +17,17 @@ exports.findById = function(req, res) {
     //});
 };
 
-exports.getCities = function(req,response) {
-      var term = req.query.term ? req.query.term : "";
-      var offset = req.query.offset ? parseInt(req.query.offset) : 0;
-      var count = req.query.count ? parseInt(req.query.count) : 50;
+exports.getCities = function(term,offset,count,callback) {
       console.log("offset " + offset);
       console.log("count " + count);
-      City.find({"name":{ "$regex": "^" + term, "$options": "i" }}, function (err, values) {
+      City.find({"name":{ "$regex": "^" + term, "$options": "i" }},function (err, values) {
       if (err){
-         console.log('Error: ' + err);
-	   return handleError(err);
+           console.log('Error: ' + err);
+	   callback(err,null);
       }
-	   console.log('Retrieving city: ' + values);
-	   return response(values);
+//	   console.log('Retrieving city: ' + values);
+	callback(null, values);
     }).sort('name').skip(offset).limit(count);    
+	
+//      response.status(200);
 };
