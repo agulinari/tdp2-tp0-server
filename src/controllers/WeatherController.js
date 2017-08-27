@@ -3,7 +3,7 @@ var errorHandler = require('../utils/ErrorHandler');
 
 //GET - Find Weather by City ID
 exports.getWeather = function(req, res) {
-    console.log('GET /weather/' + req.params.id);
+    console.log('GET /city/' + req.params.id);
     service.getWeather(req.params.id, function (err, response) {
         if (err) {
             return errorHandler.throwError(res, err);
